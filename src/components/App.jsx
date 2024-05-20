@@ -7,24 +7,56 @@ import QuestionAB from "./QuestionAB";
 import geoData from "../data/geoData";
 
 function App() {
-  const [isGameSelected, setIsGameSelected] = useState(true);
-  const isQuestionTest = false;
-  const isQuestionAB = true;
-
-  function hideMenu(event) {
-    console.log(event.target);
-    setIsGameSelected(true);
-  }
+  const [isGameMenu, setGameMenu] = useState(true);
+  const [isQuestionTest, setQuestionTest] = useState(false);
+  const [isQuestionAB, setQuestionAB] = useState(false);
 
   function showMenu(event) {
-    setIsGameSelected(false);
+    setGameMenu(true);
+    setQuestionTest(false);
+    setQuestionAB(false);
   }
+
+  function questionTest(event) {
+    if (isQuestionTest) {
+      setQuestionTest(false);
+      setQuestionAB(false);
+      setGameMenu(true);
+    } else if (!isQuestionTest) {
+      setQuestionTest(true);
+      setQuestionAB(false);
+      setGameMenu(false);
+    }
+  }
+  function questionAB(event) {
+    if (isQuestionAB) {
+      setQuestionAB(false);
+      setQuestionTest(false);
+      setGameMenu(true);
+    } else if (!isQuestionAB) {
+      setQuestionAB(true);
+      setQuestionTest(false);
+      setGameMenu(false);
+    }
+  }
+
+  function getRandomMunicipis(geoData, count) {
+    const randomGeoData = geoData.sort(() => 0.5 - Math.random());
+    return randomGeoData.slice(0, count);
+  }
+
+  const [municipi1, municipi2, municipi3] = getRandomMunicipis(geoData, 3);
+  console.log(municipi1, municipi2, municipi3);
 
   return (
     <div className="app">
-      <Header backButton={showMenu} />
+      <Header
+        backButton={showMenu}
+        questionTest={questionTest}
+        questionAB={questionAB}
+      />
       <main>
-        {isGameSelected ? null : <GameMenu onSelectGame={hideMenu} />}
+        {isGameMenu ? <GameMenu /> : null}
         {isQuestionTest ? <QuestionTest /> : null}
         {isQuestionAB ? <QuestionAB /> : null}
       </main>

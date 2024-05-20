@@ -8,6 +8,7 @@ body {
 
 h2 {
   font-size: 1.5rem;
+  text-align: center;
 }
 
 header {
@@ -61,13 +62,13 @@ header {
 }
 .back-button {
   border: none;
-  margin: 15px 0px 15px 20px;
+  margin: 15px 0px 0px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-family: monospace;
   color: #252525;
   text-transform: uppercase;
-  padding: 7px 15px;
+  padding: 5px 15px;
   border-radius: 10px;
   border: 2px solid #252525;
   background: #fafafa;
@@ -111,7 +112,7 @@ footer {
   font-size: 1.5rem;
   color: #252525;
   text-transform: uppercase;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 10px;
   border: 2px solid #252525;
   background: #fafafa;
@@ -145,15 +146,19 @@ button:active {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px 0px;
+  padding: 30px 0px;
   align-items: center;
 }
 
 .question-ab {
   display: flex;
   flex-direction: row;
-  padding: 40px 0px;
+  padding: 30px 0px;
   align-items: center;
+}
+
+.question {
+  padding: 0px 30px;
 }
 
 footer > p {

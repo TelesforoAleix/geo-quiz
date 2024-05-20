@@ -3,10 +3,10 @@ import HeaderButtons from "./HeaderButtons";
 import HeaderLogo from "./HeaderLogo";
 import HeaderScores from "./HeaderScores";
 
-function Header() {
+function Header({ backButton }) {
   return (
     <header className="header-content">
-      <HeaderButtons />
+      <HeaderButtons backButton={backButton} />
       <HeaderLogo />
       <HeaderScores />
     </header>

@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import GameMenu from "./GameMenu";
 import QuestionTest from "./QuestionTest";
 import QuestionAB from "./QuestionAB";
+import geoData from "../data/geoData";
 
 function App() {
   const [isGameSelected, setIsGameSelected] = useState(true);

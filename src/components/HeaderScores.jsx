@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import ScoreContext from "./context/scoring";
 
 function HeaderScores() {
+  const { score, bestScore, totalScore } = useContext(ScoreContext);
+  const { lifes, reduceLife, restartLife } = useContext(ScoreContext);
+
   return (
     <div className="header-scores">
-      <span> Total Score: {} </span>
-      <span> Best Score: {} </span>
+      <div className="header-scores-top">
+        <span> Punts total: {totalScore} </span>
+        <span> Record: {bestScore} </span>
+      </div>
+      <div className="header-scores-bottom">
+        <span id="lifes"> {"❤ ".repeat(lifes) + "  "}</span>
+        <span id="score"> Punts: {score} </span>
+      </div>
     </div>
   );
 }

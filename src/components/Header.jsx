@@ -3,11 +3,11 @@ import HeaderButtons from "./HeaderButtons";
 import HeaderLogo from "./HeaderLogo";
 import HeaderScores from "./HeaderScores";
 
-function Header({ backButton, questionTest, questionAB }) {
+function Header({ menuButton, questionTest, questionAB }) {
   return (
     <header className="header-content">
       <HeaderButtons
-        backButton={backButton}
+        menuButton={menuButton}
         questionTest={questionTest}
         questionAB={questionAB}
       />

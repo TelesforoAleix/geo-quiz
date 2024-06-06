@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { ScoreProvider } from "./context/scoring";
 import Header from "./Header";
 import Footer from "./Footer";
 import GameMenu from "./GameMenu";
 import QuestionTest from "./QuestionTest";
-import QuestionAB from "./QuestionAB";
-import geoData from "../data/geoData";
+import QuestionAB from "./PopulationAB";
+import GameOverScreen from "./GameOVerScreen";
 
 function App() {
   const [isGameMenu, setGameMenu] = useState(true);
@@ -28,6 +29,7 @@ function App() {
       setGameMenu(false);
     }
   }
+
   function questionAB(event) {
     if (isQuestionAB) {
       setQuestionAB(false);
@@ -40,28 +42,22 @@ function App() {
     }
   }
 
-  function getRandomMunicipis(geoData, count) {
-    const randomGeoData = geoData.sort(() => 0.5 - Math.random());
-    return randomGeoData.slice(0, count);
-  }
-
-  const [municipi1, municipi2, municipi3] = getRandomMunicipis(geoData, 3);
-  console.log(municipi1, municipi2, municipi3);
-
   return (
-    <div className="app">
-      <Header
-        backButton={showMenu}
-        questionTest={questionTest}
-        questionAB={questionAB}
-      />
-      <main>
-        {isGameMenu ? <GameMenu /> : null}
-        {isQuestionTest ? <QuestionTest /> : null}
-        {isQuestionAB ? <QuestionAB /> : null}
-      </main>
-      <Footer />
-    </div>
+    <ScoreProvider>
+      <div className="app">
+        <Header
+          menuButton={showMenu}
+          questionTest={questionTest}
+          questionAB={questionAB}
+        />
+        <main>
+          {isGameMenu ? <GameMenu /> : null}
+          {isQuestionTest ? <GameOverScreen /> : null}
+          {isQuestionAB ? <QuestionAB /> : null}
+        </main>
+        <Footer />
+      </div>
+    </ScoreProvider>
   );
 }
 

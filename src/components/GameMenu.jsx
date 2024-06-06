@@ -3,14 +3,15 @@ import React from "react";
 function GameMenu({}) {
   return (
     <div className="game-menu">
-      <button className="game-buttons">Game 1</button>
-      <button className="game-buttons">Game 2</button>
-      <button className="game-buttons">Game 3</button>
-      <h2>Section 1</h2>
+      <h2>Municipis</h2>
+      <button className="game-buttons">1vs1 | Població</button>
+      <button className="game-buttons">1vs1 | Altitud</button>
+      <button className="game-buttons">1vs1 | Superfície</button>
+      <h2>Comarques</h2>
       <button className="game-buttons">Game 4</button>
       <button className="game-buttons">Game 5</button>
       <button className="game-buttons">Game 6</button>
-      <h2>Section 1</h2>
+      <h2>Pics i serres</h2>
       <button className="game-buttons">Game 7</button>
       <button className="game-buttons">Game 8</button>
       <h2>Section 1</h2>

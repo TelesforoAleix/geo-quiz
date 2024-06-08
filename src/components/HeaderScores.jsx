@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ScoreContext from "./context/scoring";
+import ScoreContext from "./context/ScoreContext";
 
 function HeaderScores() {
   const { score, bestScore, totalScore } = useContext(ScoreContext);

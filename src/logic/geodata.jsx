@@ -4,7 +4,7 @@ function randomIndex() {
   return Math.floor(Math.random() * geoData.length);
 }
 
-function population() {
+function geoQuestionMaker(title, variable) {
   let optionId1 = randomIndex();
   let optionId2 = randomIndex();
 
@@ -16,14 +16,19 @@ function population() {
   const option2 = geoData[optionId2];
 
   const question = {
-    title: "Quin municipi té més població?",
+    title,
     option1: option1,
     option2: option2,
-    answer: option1.poblacio > option2.poblacio ? option1 : option2,
-    explanation: `${option1.municipi} té ${option1.poblacio}, mentres que ${option2.municipi} té ${option2.poblacio}`,
+    answer: option1[variable] > option2[variable] ? option1 : option2,
   };
 
   return question;
 }
 
-export default population;
+const populationQuestion = geoQuestionMaker("Quin municipi té més població?", "poblacio");
+
+const altitudeQuestion = geoQuestionMaker("Quin municipi té més altitud?", "altitud");
+
+const surfaceQuestion = geoQuestionMaker("Quin municipi té més superfície?", "superficie");
+
+export {populationQuestion, altitudeQuestion, surfaceQuestion};

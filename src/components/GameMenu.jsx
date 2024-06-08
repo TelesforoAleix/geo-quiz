@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import GameContext from "../components/context/GameContext";
 
-function GameMenu({}) {
+function GameMenu({ onSetGameModeAndStart }) {
   return (
     <div className="game-menu">
       <h2>Municipis</h2>
-      <button className="game-buttons">1vs1 | Població</button>
-      <button className="game-buttons">1vs1 | Altitud</button>
-      <button className="game-buttons">1vs1 | Superfície</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('population')}>1vs1 | Població</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('altitude')}>1vs1 | Altitud</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('surface')}>1vs1 | Superfície</button>
       <h2>Comarques</h2>
       <button className="game-buttons">Game 4</button>
       <button className="game-buttons">Game 5</button>

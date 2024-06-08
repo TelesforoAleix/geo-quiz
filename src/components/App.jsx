@@ -1,62 +1,55 @@
-import React, { useState } from "react";
-import { ScoreProvider } from "./context/scoring";
+import React, { useState, useContext } from "react";
+import { ScoreProvider } from "./context/ScoreContext";
+import GameContext, { GameProvider } from "./context/GameContext";
 import Header from "./Header";
 import Footer from "./Footer";
 import GameMenu from "./GameMenu";
-import QuestionTest from "./QuestionTest";
-import QuestionAB from "./PopulationAB";
+import QuestionAB from "./QuestionAB";
 import GameOverScreen from "./GameOVerScreen";
 
 function App() {
   const [isGameMenu, setGameMenu] = useState(true);
   const [isQuestionTest, setQuestionTest] = useState(false);
   const [isQuestionAB, setQuestionAB] = useState(false);
+  const { setGameMode } = useContext(GameContext);
 
-  function showMenu(event) {
+  function showMenu() {
     setGameMenu(true);
     setQuestionTest(false);
     setQuestionAB(false);
   }
 
-  function questionTest(event) {
-    if (isQuestionTest) {
-      setQuestionTest(false);
-      setQuestionAB(false);
-      setGameMenu(true);
-    } else if (!isQuestionTest) {
-      setQuestionTest(true);
-      setQuestionAB(false);
-      setGameMenu(false);
-    }
+  function questionTest() {
+    setQuestionTest(!isQuestionTest);
+    setQuestionAB(false);
+    setGameMenu(!isQuestionTest);
   }
 
-  function questionAB(event) {
-    if (isQuestionAB) {
-      setQuestionAB(false);
-      setQuestionTest(false);
-      setGameMenu(true);
-    } else if (!isQuestionAB) {
-      setQuestionAB(true);
-      setQuestionTest(false);
-      setGameMenu(false);
-    }
+  function questionAB() {
+    setQuestionAB(!isQuestionAB);
+    setQuestionTest(false);
+    setGameMenu(!isQuestionAB);
+  }
+
+  function setGameModeAndStart(gameMode) {
+    setGameMode(gameMode);
+    setGameMenu(false);
+    setQuestionAB(true);
   }
 
   return (
     <ScoreProvider>
-      <div className="app">
-        <Header
-          menuButton={showMenu}
-          questionTest={questionTest}
-          questionAB={questionAB}
-        />
-        <main>
-          {isGameMenu ? <GameMenu /> : null}
-          {isQuestionTest ? <GameOverScreen /> : null}
-          {isQuestionAB ? <QuestionAB /> : null}
-        </main>
-        <Footer />
-      </div>
+      <GameProvider>
+        <div className="app">
+          <Header menuButton={showMenu} questionTest={questionTest} questionAB={questionAB} />
+          <main>
+            {isGameMenu && <GameMenu onSetGameModeAndStart={setGameModeAndStart} />}
+            {isQuestionTest && <GameOverScreen />}
+            {isQuestionAB && <QuestionAB />}
+          </main>
+          <Footer />
+        </div>
+      </GameProvider>
     </ScoreProvider>
   );
 }

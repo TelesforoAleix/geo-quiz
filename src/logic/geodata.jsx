@@ -5,24 +5,26 @@ function randomIndex() {
 }
 
 function geoQuestionMaker(title, variable) {
-  let optionId1 = randomIndex();
-  let optionId2 = randomIndex();
+  return () => {
+    let optionId1 = randomIndex();
+    let optionId2 = randomIndex();
 
-  while (optionId1 === optionId2) {
-    optionId2 = randomIndex();
-  }
+    while (optionId1 === optionId2) {
+      optionId2 = randomIndex();
+    }
 
-  const option1 = geoData[optionId1];
-  const option2 = geoData[optionId2];
+    const option1 = geoData[optionId1];
+    const option2 = geoData[optionId2];
 
-  const question = {
-    title,
-    option1: option1,
-    option2: option2,
-    answer: option1[variable] > option2[variable] ? option1 : option2,
+    const question = {
+      title,
+      option1: option1,
+      option2: option2,
+      answer: option1[variable] > option2[variable] ? option1 : option2,
+    };
+
+    return question;
   };
-
-  return question;
 }
 
 const populationQuestion = geoQuestionMaker("Quin municipi té més població?", "poblacio");

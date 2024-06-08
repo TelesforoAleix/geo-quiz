@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
-import GameContext from "../components/context/GameContext";
+import GameContext from "./context/GameContext";
 
-function GameMenu({ onSetGameModeAndStart }) {
+function GameMenu() {
+  const { setGameMode, setGameTopic } = useContext(GameContext);
+
+  const onSetGameModeAndStart = (mode, topic) => {
+    setGameMode(mode);
+    setGameTopic(topic);
+  };
+
   return (
     <div className="game-menu">
       <h2>Municipis</h2>
-      <button className="game-buttons" onClick={() => onSetGameModeAndStart('population')}>1vs1 | Població</button>
-      <button className="game-buttons" onClick={() => onSetGameModeAndStart('altitude')}>1vs1 | Altitud</button>
-      <button className="game-buttons" onClick={() => onSetGameModeAndStart('surface')}>1vs1 | Superfície</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionAB', 'population')}>1vs1 | Població</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionAB', 'altitude')}>1vs1 | Altitud</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionAB', 'surface')}>1vs1 | Superfície</button>
       <h2>Comarques</h2>
       <button className="game-buttons">Game 4</button>
       <button className="game-buttons">Game 5</button>

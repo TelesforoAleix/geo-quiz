@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <footer>
-      <p> Creat per Aleix Moreno Telesforo</p>
+      <p>Contribueix a: <a href="https://github.com/TelesforoAleix/geo-quiz">GitHub</a></p>
     </footer>
   );
 }

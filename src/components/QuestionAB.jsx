@@ -3,24 +3,20 @@ import ScoreContext from "./context/ScoreContext";
 import GameContext from "./context/GameContext";
 import GameOverScreen from "./GameOVerScreen";
 
-
 function QuestionAB() {
   const [question, setQuestion] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [answered, setAnswered] = useState(false);
-  const { increaseScore, reduceLife, lifes, restartGame } =
-    useContext(ScoreContext);
-  const { generateQuestion } = useContext(GameContext)
+  const { increaseScore, reduceLife, lifes, restartGame } = useContext(ScoreContext);
+  const { getQuestion, gameTopic } = useContext(GameContext);
   const [round, setRound] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
   function checkAnswer(selectedOption) {
-    setSelectedOption(selectedOption);
+     setSelectedOption(selectedOption);
     setAnswered(true);
     if (selectedOption === question.answer) {
       increaseScore();
-    } else if (lifes === 0) {
-      setGameOver(true);
     } else {
       reduceLife();
     }
@@ -28,37 +24,60 @@ function QuestionAB() {
   }
 
   useEffect(() => {
-    if (round > 0) {
+    if (lifes === 0) {
+      setGameOver(true);
+    } else if (round > 0) {
       const timeout = setTimeout(() => {
         setSelectedOption(null);
         setAnswered(false);
-        setQuestion(generateQuestion());
-      }, 500);
-
+        setQuestion(getQuestion());
+      }, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [round]);
+  }, [round, lifes, getQuestion]);
+
+  useEffect(() => {
+    setQuestion(getQuestion());
+  }, [getQuestion]);
 
   const restart = () => {
     setRound(0);
     setGameOver(false);
     restartGame();
-    setQuestion(generateQuestion());
+    setAnswered(false);
+    setQuestion(getQuestion());
   };
+
+  const getDetailAnswer = (municipi) => {
+    switch (gameTopic) {
+      case 'population':
+        return municipi.poblacio + ' habitants';
+      case 'altitude':
+        return municipi.altitud + ' m';
+      case 'surface':
+        return municipi.superficie + ' m2';
+      default:
+        return 'Not rendered';
+    }
+  }
 
   if (gameOver) {
     return <GameOverScreen onRestart={restart} />;
   }
 
   if (!question) {
-    return <div className="message">Loading...</div>; 
+    return <div className="message">Loading...</div>;
   }
+
+  console.log('Checking...');
+  console.log(selectedOption, question.answer);
 
   return (
     <div className="question-test">
       <h2 className="question">{question.title}</h2>
-
       <div className="question-ab">
+
+
         <button
           onClick={() => checkAnswer(question.option1)}
           className="game-buttons-ab"
@@ -70,14 +89,14 @@ function QuestionAB() {
                   ? "green"
                   : "red"
                 : "initial",
-          }}
-        >
+          }}>
           {question.option1.municipi}
           <br />
           <span style={{ fontSize: 16 }}>
-            {answered ? question.option1.poblacio : question.option1.comarca}
+            {answered ? getDetailAnswer(question.option1) : question.option1.comarca}
           </span>
         </button>
+
 
         <button
           onClick={() => checkAnswer(question.option2)}
@@ -95,7 +114,7 @@ function QuestionAB() {
           {question.option2.municipi}
           <br />
           <span style={{ fontSize: 16 }}>
-            {answered ? question.option2.poblacio : question.option2.comarca}
+            {answered ? getDetailAnswer(question.option2) : question.option2.comarca}
           </span>
         </button>
       </div>

@@ -10,10 +10,11 @@ function Main() {
   
     const renderGameComponent = () => {
         switch (gameMode) {
-          case 'questionAB':
+        case 'questionAB':
             return <QuestionAB question={getQuestion()} />;
-          // Add other cases here when needed
-          default:
+        case 'questionTest':
+            return <QuestionTest question={getQuestion()} />
+        default:
             return <GameMenu />;
         }
       };

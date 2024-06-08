@@ -16,9 +16,9 @@ function GameMenu() {
       <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionAB', 'altitude')}>1vs1 | Altitud</button>
       <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionAB', 'surface')}>1vs1 | Superfície</button>
       <h2>Comarques</h2>
-      <button className="game-buttons">Game 4</button>
-      <button className="game-buttons">Game 5</button>
-      <button className="game-buttons">Game 6</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionTest', 'capital')}>Test | Capital</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionTest', 'comarca')}>Test | Comarques</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionTest', 'provincia')}>Test | Provincies</button>
       <h2>Pics i serres</h2>
       <button className="game-buttons">Game 7</button>
       <button className="game-buttons">Game 8</button>

@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
-import { populationQuestion, altitudeQuestion, surfaceQuestion } from "../../logic/geodata";
+import { populationQuestion, altitudeQuestion, surfaceQuestion } from "../../logic/municipis";
+import { capitalComarca, comarcaCapital, comarcaProvincia } from "../../logic/comarques"
 
 const GameContext = createContext();
 
@@ -22,8 +23,12 @@ export function GameProvider({ children }) {
 
   const getQuestionTest = () => {
     switch (gameTopic) {
-      case 'population':
-        return null;
+      case 'capital':
+        return capitalComarca();
+      case 'comarca':
+        return comarcaCapital();
+      case 'provincia':
+        return comarcaProvincia();
       default:
         return null;
     }

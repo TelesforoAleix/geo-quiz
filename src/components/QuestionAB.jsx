@@ -69,8 +69,6 @@ function QuestionAB() {
     return <div className="message">Loading...</div>;
   }
 
-  console.log('Checking...');
-  console.log(selectedOption, question.answer);
 
   return (
     <div className="question-test">

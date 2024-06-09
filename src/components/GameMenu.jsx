@@ -20,7 +20,7 @@ function GameMenu() {
       <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionTest', 'comarca')}>Test | Comarques</button>
       <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionTest', 'provincia')}>Test | Provincies</button>
       <h2>Pics i serres</h2>
-      <button className="game-buttons">Game 7</button>
+      <button className="game-buttons" onClick={() => onSetGameModeAndStart('questionMap', null)}>CataloniaMap</button>
       <button className="game-buttons">Game 8</button>
       <h2>Section 1</h2>
       <button className="game-buttons">Game 9</button>

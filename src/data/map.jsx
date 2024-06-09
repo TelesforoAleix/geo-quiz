@@ -2,15 +2,15 @@ import React from "react";
 
 function Map() {
   return (
-    <div style={{ width: '360px', height: '360px' }}>
     <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="svg29869"
-        width="100%" 
-        height="auto" 
-        viewBox="0 0 2786 2501.333" 
-        version="1"
->
+      xmlns="http://www.w3.org/2000/svg"
+      id="svg29869"
+      width="100%"
+      height="auto"
+      viewBox="0 0 2786 2501.333"
+      preserveAspectRatio="xMidyMin"
+      version="1"
+    >
       <defs id="defs29871">
         <filter
           id="filter5875"
@@ -18,18 +18,13 @@ function Map() {
           height="1.088"
           x="-0.04"
           y="-0.044"
-        >
-          <feGaussianBlur
-            id="feGaussianBlur5877"
-            stdDeviation="66.743"
-          ></feGaussianBlur>
-        </filter>
+        ></filter>
       </defs>
       <g
         id="layer1"
         fillOpacity="1"
         display="inline"
-        transform="translate(482.798 2015.156)"
+        transform="translate(492.7977,2115.1558)"
       >
         <g
           id="g4238"
@@ -39,7 +34,7 @@ function Map() {
           strokeDasharray="none"
           strokeMiterlimit="4"
           strokeOpacity="0.467"
-          strokeWidth="2"
+          strokeWidth="4"
           opacity="1"
           transform="translate(-6380.487) scale(1.1)"
         >
@@ -216,7 +211,8 @@ function Map() {
           strokeDasharray="none"
           strokeMiterlimit="4"
           strokeOpacity="1"
-          strokeWidth="4"
+          strokeWidth="6"
+          transform="scale(1.1)"
         >
           <path
             id="path4283"
@@ -237,7 +233,6 @@ function Map() {
         </g>
       </g>
     </svg>
-    </div>
   );
 }
 

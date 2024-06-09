@@ -14,8 +14,6 @@ function QuestionTest() {
   const [gameOver, setGameOver] = useState(false);
 
   function checkAnswer(selectedOption) {
-    console.log("Selected Option:", selectedOption);
-    console.log("Correct Option:", question.correctOption);
    setSelectedOption(selectedOption);
    setAnswered(true);
    if (selectedOption === question.correctOption) {
@@ -27,9 +25,6 @@ function QuestionTest() {
  }
 
  useEffect(() => {
-  console.log("Question:", question);
-  console.log("Selected Option:", selectedOption);
-  console.log("Answered:", answered);
    if (lifes === 0) {
      setGameOver(true);
    } else if (round > 0) {

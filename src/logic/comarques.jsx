@@ -30,15 +30,31 @@ function randomIndex(num) {
             answer: options[answerId][questionVariable],
             correctOption: options[answerId][optionVariable]
         };
-
-        console.log("Generated Question:", question);
         
         return question;
     };
 }
 
+function provinciaQuestionMaker(title, questionVariable, optionVariable) {
+    return () => {
+    const id = randomIndex(comarques.length);
+
+    const question = {
+        title,
+        option1: "Barcelona",
+        option2: "Griona",
+        option3: "Tarragona",
+        option4: "Lleida",
+        answer: comarques[id][questionVariable],
+        correctOption: comarques[id][optionVariable]
+    };
+
+    return question;
+    }
+};
+
 const capitalComarca = comarcaTestMaker("Quina és la capital de comarca?", "comarca", "capital");
 const comarcaCapital = comarcaTestMaker("De quina comarca és capital?", "capital","comarca");
-const comarcaProvincia = comarcaTestMaker("A quina provincia es troba?", "comarca", "provincia");
+const comarcaProvincia = provinciaQuestionMaker("A quina provincia es troba?", "comarca", "provincia");
 
 export { capitalComarca, comarcaCapital, comarcaProvincia };

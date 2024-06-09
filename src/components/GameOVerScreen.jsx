@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import broma from "../data/mesages";
+import broma from "../data/missatges";
 
 function GameOverScreen({ onRestart }) {
   const message = broma();

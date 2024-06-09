@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import GameMenu from "./GameMenu";
 import QuestionAB from "./QuestionAB";
-import QuestionTest from "./QuestionTest"
+import QuestionTest from "./QuestionTest";
+import QuestionMap from "./QuestionMap";
 import GameContext from "./context/GameContext";
 
 function Main() {
@@ -13,7 +14,9 @@ function Main() {
         case 'questionAB':
             return <QuestionAB question={getQuestion()} />;
         case 'questionTest':
-            return <QuestionTest question={getQuestion()} />
+            return <QuestionTest question={getQuestion()} />;
+        case 'questionMap':
+            return <QuestionMap />
         default:
             return <GameMenu />;
         }
